@@ -4,11 +4,11 @@
 function impacKeyboard() {}
 
 impacKeyboard.prototype.showKeyboard = function(ids) {
-    cordova.exec(null, null, 'ImpacInappPayment', 'showKeyboard', []);
+    cordova.exec(null, null, 'ImpacKeyboard', 'showKeyboard', []);
 }
 
 impacKeyboard.prototype.onSendMessage = function(ids) {
-    cordova.exec(null, null, 'ImpacInappPayment', 'onSendMessage', []);
+    cordova.exec(null, null, 'ImpacKeyboard', 'onSendMessage', []);
 }
 
 impacKeyboard.prototype._getErrorCallback = function (ecb, functionName) {
