@@ -4,7 +4,7 @@
     "description": "An Cordova plugin for iOS and Android that add a native keyboard for chats.",
     "cordova": {
       "id": "cordova-plugin-impac-keyboard",
-      "platforms": [        
+      "platforms": [
         "ios"
       ]
     },
@@ -22,9 +22,7 @@
     "engines": {
       "cordovaDependencies": {
         "0.1.0": {
-          "cordova-android": ">8.0.0",
           "cordova-ios": ">5.0.0",
-          "cordova-plugin-android-support-v7-appcompat": "1.0.0"
         }
       }
     },
