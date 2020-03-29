@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IMPInputView" customModule="ChatKeyboard_Test" customModuleProvider="target">
+            <connections>
+                <outlet property="inputContainerView" destination="d6L-dw-PnZ" id="CI5-mE-cYR"/>
+                <outlet property="sendButton" destination="HCl-mh-2UH" id="GC0-DH-8wh"/>
+                <outlet property="textView" destination="jgo-1a-oRj" id="f5q-Rd-ppD"/>
+                <outlet property="view" destination="iN0-l3-epB" id="W6F-rI-r8e"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6L-dw-PnZ">
+                    <rect key="frame" x="16" y="8" width="328" height="44"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-1a-oRj">
+                            <rect key="frame" x="4" y="4" width="320" height="36"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="jgo-1a-oRj" secondAttribute="trailing" constant="4" id="1Qd-TF-4Oz"/>
+                        <constraint firstItem="jgo-1a-oRj" firstAttribute="top" secondItem="d6L-dw-PnZ" secondAttribute="top" constant="4" id="deW-HD-LgP"/>
+                        <constraint firstAttribute="bottom" secondItem="jgo-1a-oRj" secondAttribute="bottom" constant="4" id="gKb-Ok-lZ5"/>
+                        <constraint firstItem="jgo-1a-oRj" firstAttribute="leading" secondItem="d6L-dw-PnZ" secondAttribute="leading" constant="4" id="vJv-e0-zXU"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCl-mh-2UH">
+                    <rect key="frame" x="352" y="22" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="ZI3-Et-H0v"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HCl-mh-2UH" secondAttribute="trailing" constant="16" id="8FF-gz-OX8"/>
+                <constraint firstItem="d6L-dw-PnZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="9wl-oR-9RB"/>
+                <constraint firstAttribute="bottom" secondItem="d6L-dw-PnZ" secondAttribute="bottom" constant="8" id="H1J-Xa-PIa"/>
+                <constraint firstItem="d6L-dw-PnZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Pjw-gW-zch"/>
+                <constraint firstItem="HCl-mh-2UH" firstAttribute="leading" secondItem="d6L-dw-PnZ" secondAttribute="trailing" constant="8" id="bYb-OU-Aak"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HCl-mh-2UH" secondAttribute="bottom" constant="8" id="uJ2-xL-9UU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="133.33333333333334" y="445.64732142857139"/>
+        </view>
+    </objects>
+</document>
