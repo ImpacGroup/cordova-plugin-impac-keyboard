@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc (ImpacInappPayment) class ImpacKeyboard: CDVPlugin, InputViewDelegate {
+@objc (ImpacKeyboard) class ImpacKeyboard: CDVPlugin, InputViewDelegate {
     
     let height: CGFloat = 60.0;
     var chatInputView: IMPInputView?

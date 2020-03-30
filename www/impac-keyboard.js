@@ -1,14 +1,11 @@
-
-
-// Empty constructor
 function ImpacKeyboard() {}
 
-ImpacKeyboard.prototype.showKeyboard = function(ids) {
+ImpacKeyboard.prototype.showKeyboard = function() {
     cordova.exec(null, null, 'ImpacKeyboard', 'showKeyboard', []);
 }
 
-ImpacKeyboard.prototype.onSendMessage = function(ids) {
-    cordova.exec(null, null, 'ImpacKeyboard', 'onSendMessage', []);
+ImpacKeyboard.prototype.onSendMessage = function(callback) {
+    cordova.exec(callback, null, 'ImpacKeyboard', 'onSendMessage', []);
 }
 
 ImpacKeyboard.prototype._getErrorCallback = function (ecb, functionName) {
@@ -25,7 +22,8 @@ ImpacKeyboard.install = function() {
     if (!window.plugins) {
         window.plugins = {};
     }
-    window.plugins.impacKeyboard = new impacKeyboard();
+    window.plugins.impacKeyboard = new ImpacKeyboard();
     return window.plugins.impacKeyboard;
 }
+
 cordova.addConstructor(ImpacKeyboard.install);
