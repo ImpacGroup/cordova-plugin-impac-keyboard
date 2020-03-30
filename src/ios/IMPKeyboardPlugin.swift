@@ -21,7 +21,7 @@ import Foundation
             chatInputView = IMPInputView(frame: CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: height))
             chatInputView?.delegate = self
             btmView = UIView(frame: CGRect(x: 0, y: viewController.view.frame.size.height - viewController.view.safeAreaInsets.bottom, width: viewController.view.frame.size.width, height: viewController.view.safeAreaInsets.bottom))
-            btmView?.backgroundColor = UIColor.secondarySystemBackground
+            btmView?.backgroundColor = UIColor.groupTableViewBackground
             viewController.view.addSubview(chatInputView!)
             viewController.view.addSubview(btmView!)
             addConstraints(constraintView: chatInputView!)
