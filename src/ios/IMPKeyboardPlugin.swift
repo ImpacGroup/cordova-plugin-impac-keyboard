@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Cordova
 
 @objc (ImpacInappPayment) class ImpacKeyboard: CDVPlugin, InputViewDelegate {
     
