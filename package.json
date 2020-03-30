@@ -13,7 +13,7 @@
       "url": "git+https://github.com/ImpacGroup/cordova-plugin-impac-keyboard.git"
     },
     "keywords": [
-      "chat"
+      "chat",
       "keyboard",
       "ecosystem:cordova",
       "cordova-android",
@@ -22,7 +22,7 @@
     "engines": {
       "cordovaDependencies": {
         "0.1.0": {
-          "cordova-ios": ">5.0.0",
+          "cordova-ios": ">5.0.0"
         }
       }
     },
