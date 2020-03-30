@@ -11,7 +11,7 @@
     <issue>https://github.com/ImpacGroup/cordova-plugin-impac-keyboard/issues</issue>
 
     <engines>
-        <engine name="cordova" version=">=4.0.0"/>
+        <engine name="cordova" version=">=3.0.0"/>
     </engines>
 
     <js-module src="www/impac-keyboard.js" name="impac-keyboard">
