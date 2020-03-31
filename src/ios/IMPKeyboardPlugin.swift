@@ -36,6 +36,17 @@ fileprivate let height: CGFloat = 60.0;
         onSendCallbackId = command.callbackId
     }
     
+    @objc(setImage:) func setImage(command: CDVInvokedUrlCommand) {
+        if command.arguments.count == 1, let base64Img = command.arguments[0] as? String {
+            if let mChatInputView = chatInputView, let dataDecoded : Data = Data(base64Encoded: base64Img, options: .ignoreUnknownCharacters) {
+                let decodedimage = UIImage(data: dataDecoded)
+                mChatInputView.sendButton.setImage(decodedimage, for: .normal)
+            }
+        } else {
+            print("ImpacInappPayment: Invalid arguments, missing image base 64 string")
+        }
+    }
+    
     @objc(setColor:) func setColor(command: CDVInvokedUrlCommand) {
         if command.arguments.count == 1, let color = command.arguments[0] as? String {
             if let mChatInputView = chatInputView, let mColor = UIColor(hex: color) {
@@ -49,6 +60,7 @@ fileprivate let height: CGFloat = 60.0;
     @objc(hideKeyboard:) func hideKeyboard(command: CDVInvokedUrlCommand) {
         if let mChatInputView = chatInputView {
             mChatInputView.removeFromSuperview()
+            chatInputView = nil
         }
     }
     

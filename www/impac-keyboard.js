@@ -1,7 +1,7 @@
 function ImpacKeyboard() {}
 
-ImpacKeyboard.prototype.showKeyboard = function() {
-    cordova.exec(null, null, 'ImpacKeyboard', 'showKeyboard', []);
+ImpacKeyboard.prototype.showKeyboard = function(callback) {
+    cordova.exec(callback, null, 'ImpacKeyboard', 'showKeyboard', []);
 }
 
 ImpacKeyboard.prototype.onSendMessage = function(callback) {
