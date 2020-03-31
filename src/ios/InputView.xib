@@ -25,13 +25,13 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-1a-oRj">
                             <rect key="frame" x="4" y="4" width="330" height="47"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="jgo-1a-oRj" secondAttribute="trailing" constant="4" id="1Qd-TF-4Oz"/>
                         <constraint firstItem="jgo-1a-oRj" firstAttribute="top" secondItem="d6L-dw-PnZ" secondAttribute="top" constant="4" id="deW-HD-LgP"/>
@@ -46,7 +46,8 @@
                         <constraint firstAttribute="width" secondItem="HCl-mh-2UH" secondAttribute="height" multiplier="1:1" id="DKT-fo-Fhb"/>
                         <constraint firstAttribute="width" constant="36" id="iC4-1d-TXs"/>
                     </constraints>
-                    <state key="normal" image="baseline_send_white_18dp">
+                    <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                    <state key="normal">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -55,7 +56,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HCl-mh-2UH" secondAttribute="trailing" constant="16" id="8FF-gz-OX8"/>
                 <constraint firstItem="d6L-dw-PnZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="9wl-oR-9RB"/>
@@ -69,7 +70,4 @@
             <point key="canvasLocation" x="148" y="324"/>
         </view>
     </objects>
-    <resources>
-        <image name="baseline_send_white_18dp" width="18" height="18"/>
-    </resources>
 </document>
