@@ -16,6 +16,8 @@ fileprivate let height: CGFloat = 60.0;
     var bottomConst: NSLayoutConstraint?
     private var onSendCallbackId: String?
     var btmView: UIView?
+    var defaultSize: CGRect?
+    var keyboardSize: CGRect?
     
     @objc(showKeyboard:) func showKeyboard(command: CDVInvokedUrlCommand) {
         if chatInputView == nil {
@@ -27,9 +29,25 @@ fileprivate let height: CGFloat = 60.0;
             viewController.view.addSubview(btmView!)
             addConstraints(constraintView: chatInputView!)
             addKeyboardObserver()
+            defaultSize = webView.frame;
+            webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: webView.frame.size.height - (height + viewController.view.safeAreaInsets.bottom))
         }
         let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: true)
         self.commandDelegate.send(result, callbackId: command.callbackId)
+    }
+    
+    private func updateWebViewSize(show: Bool, open: Bool) {
+        if let mSize = defaultSize {
+            if !show {
+                webView.frame = mSize
+            } else {
+                if open, let mKeySize = keyboardSize {
+                    webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: mSize.height - (height + viewController.view.safeAreaInsets.bottom + mKeySize.height))
+                } else {
+                    webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: mSize.height - (height + viewController.view.safeAreaInsets.bottom))
+                }
+            }
+        }
     }
     
     @objc(onSendMessage:) func onSendMessage(command: CDVInvokedUrlCommand) {
@@ -91,9 +109,11 @@ fileprivate let height: CGFloat = 60.0;
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, let mConst = bottomConst {
-            mConst.constant = keyboardSize.height - viewController.view.safeAreaInsets.bottom
+        if let mkeyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, let mConst = bottomConst {
+            keyboardSize = mkeyboardSize
+            mConst.constant = mkeyboardSize.height - viewController.view.safeAreaInsets.bottom
             viewController.view.layoutIfNeeded()
+            updateWebViewSize(show: true, open: true)
         }
     }
     
@@ -101,6 +121,7 @@ fileprivate let height: CGFloat = 60.0;
         if let mConst = bottomConst {
             mConst.constant = 0
             viewController.view.layoutIfNeeded()
+            updateWebViewSize(show: true, open: false)
         }
     }
     
