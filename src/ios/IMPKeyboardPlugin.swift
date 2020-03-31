@@ -15,6 +15,7 @@ fileprivate let height: CGFloat = 60.0;
     var chatInputView: IMPInputView?
     var bottomConst: NSLayoutConstraint?
     private var onSendCallbackId: String?
+    private var onInputCallbackId: String?
     var btmView: UIView?
     var defaultSize: CGRect?
     var keyboardSize: CGRect?
@@ -30,7 +31,7 @@ fileprivate let height: CGFloat = 60.0;
             addConstraints(constraintView: chatInputView!)
             addKeyboardObserver()
             defaultSize = webView.frame;
-            webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: webView.frame.size.height - (height + viewController.view.safeAreaInsets.bottom))
+            updateWebViewSize(show: true, open: false)
         }
         let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: true)
         self.commandDelegate.send(result, callbackId: command.callbackId)
@@ -42,7 +43,7 @@ fileprivate let height: CGFloat = 60.0;
                 webView.frame = mSize
             } else {
                 if open, let mKeySize = keyboardSize {
-                    webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: mSize.height - (height + viewController.view.safeAreaInsets.bottom + mKeySize.height))
+                    webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: mSize.height - (height + mKeySize.height))
                 } else {
                     webView.frame = CGRect(x: webView.frame.origin.x, y: webView.frame.origin.y, width: webView.frame.size.width, height: mSize.height - (height + viewController.view.safeAreaInsets.bottom))
                 }
@@ -52,6 +53,10 @@ fileprivate let height: CGFloat = 60.0;
     
     @objc(onSendMessage:) func onSendMessage(command: CDVInvokedUrlCommand) {
         onSendCallbackId = command.callbackId
+    }
+    
+    @objc(onInputChanged:) func onInputChanged(command: CDVInvokedUrlCommand) {
+        onInputCallbackId = command.callbackId
     }
     
     @objc(setImage:) func setImage(command: CDVInvokedUrlCommand) {
@@ -90,6 +95,7 @@ fileprivate let height: CGFloat = 60.0;
         if let mChatInputView = chatInputView {
             mChatInputView.removeFromSuperview()
             chatInputView = nil
+            updateWebViewSize(show: false, open: false)
         }
     }
     
@@ -114,6 +120,10 @@ fileprivate let height: CGFloat = 60.0;
             mConst.constant = mkeyboardSize.height - viewController.view.safeAreaInsets.bottom
             viewController.view.layoutIfNeeded()
             updateWebViewSize(show: true, open: true)
+            
+            let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "")
+            result?.keepCallback = true
+            self.commandDelegate.send(result, callbackId: onInputCallbackId)
         }
     }
     
@@ -122,6 +132,10 @@ fileprivate let height: CGFloat = 60.0;
             mConst.constant = 0
             viewController.view.layoutIfNeeded()
             updateWebViewSize(show: true, open: false)
+            
+            let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "")
+            result?.keepCallback = true
+            self.commandDelegate.send(result, callbackId: onInputCallbackId)
         }
     }
     

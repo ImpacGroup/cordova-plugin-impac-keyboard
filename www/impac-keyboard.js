@@ -8,6 +8,10 @@ ImpacKeyboard.prototype.onSendMessage = function(callback) {
     cordova.exec(callback, null, 'ImpacKeyboard', 'onSendMessage', []);
 }
 
+ImpacKeyboard.prototype.onInputChanged = function(callback) {
+    cordova.exec(callback, null, 'ImpacKeyboard', 'onInputChanged', []);
+}
+
 ImpacKeyboard.prototype.setColor = function(color) {
     cordova.exec(null, null, 'ImpacKeyboard', 'setColor', [color]);
 }
