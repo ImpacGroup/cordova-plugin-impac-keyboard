@@ -27,6 +27,7 @@
         <source-file src="src/ios/InputView.swift"/>
         <source-file src="src/ios/InputView.xib"/>
         <source-file src="src/ios/IMPKeyboardPlugin.swift"/>
+        <source-file src="src/ios/UIColor-Extension.swift"/>
     </platform>
 
 </plugin>

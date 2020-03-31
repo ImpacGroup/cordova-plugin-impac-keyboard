@@ -17,14 +17,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6L-dw-PnZ">
-                    <rect key="frame" x="16" y="8" width="328" height="44"/>
+                    <rect key="frame" x="16" y="8" width="338" height="55"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-1a-oRj">
-                            <rect key="frame" x="4" y="4" width="320" height="36"/>
+                            <rect key="frame" x="4" y="4" width="330" height="47"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -39,9 +39,17 @@
                         <constraint firstItem="jgo-1a-oRj" firstAttribute="leading" secondItem="d6L-dw-PnZ" secondAttribute="leading" constant="4" id="vJv-e0-zXU"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCl-mh-2UH">
-                    <rect key="frame" x="352" y="22" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCl-mh-2UH">
+                    <rect key="frame" x="362" y="27" width="36" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="HCl-mh-2UH" secondAttribute="height" multiplier="1:1" id="DKT-fo-Fhb"/>
+                        <constraint firstAttribute="width" constant="36" id="iC4-1d-TXs"/>
+                    </constraints>
+                    <state key="normal" image="baseline_send_white_18dp">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="ZI3-Et-H0v"/>
                     </connections>
@@ -58,7 +66,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="133.33333333333334" y="445.64732142857139"/>
+            <point key="canvasLocation" x="148" y="324"/>
         </view>
     </objects>
+    <resources>
+        <image name="baseline_send_white_18dp" width="18" height="18"/>
+    </resources>
 </document>

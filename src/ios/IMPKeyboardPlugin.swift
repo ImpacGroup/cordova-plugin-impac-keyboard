@@ -8,9 +8,10 @@
 
 import Foundation
 
+fileprivate let height: CGFloat = 60.0;
+
 @objc (ImpacKeyboard) class ImpacKeyboard: CDVPlugin, InputViewDelegate {
     
-    let height: CGFloat = 60.0;
     var chatInputView: IMPInputView?
     var bottomConst: NSLayoutConstraint?
     private var onSendCallbackId: String?
@@ -34,6 +35,24 @@ import Foundation
     @objc(onSendMessage:) func onSendMessage(command: CDVInvokedUrlCommand) {
         onSendCallbackId = command.callbackId
     }
+    
+    @objc(setColor:) func setColor(command: CDVInvokedUrlCommand) {
+        if command.arguments.count == 1, let color = command.arguments[0] as? String {
+            if let mChatInputView = chatInputView, let mColor = UIColor(hex: color) {
+                mChatInputView.setButtonColor(color: mColor)
+            }
+        } else {
+            print("ImpacInappPayment: Invalid arguments, missing color string")
+        }
+    }
+    
+    @objc(hideKeyboard:) func hideKeyboard(command: CDVInvokedUrlCommand) {
+        if let mChatInputView = chatInputView {
+            mChatInputView.removeFromSuperview()
+        }
+    }
+    
+    
     
     private func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
