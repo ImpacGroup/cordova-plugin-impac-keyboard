@@ -97,6 +97,11 @@ fileprivate let height: CGFloat = 60.0;
             chatInputView = nil
             updateWebViewSize(show: false, open: false)
         }
+        
+        if let mBtmView = btmView {
+            mBtmView.removeFromSuperview()
+            btmView = nil
+        }
     }
     
     
