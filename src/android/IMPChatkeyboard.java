@@ -26,7 +26,7 @@ public class IMPChatkeyboard extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        FrameLayout frameLayout =  (FrameLayout) webView.getView().getParent();
+        final FrameLayout frameLayout =  (FrameLayout) webView.getView().getParent();
         switch (action) {
             case "showKeyboard":
                 if (chatInputView == null) {
@@ -35,7 +35,12 @@ public class IMPChatkeyboard extends CordovaPlugin {
                     Resources resources = app.getResources();
                     int ic = resources.getIdentifier("chat_input_view", "layout", package_name);
                     chatInputView = LayoutInflater.from(this.cordova.getActivity()).inflate(ic, null);
-                    frameLayout.addView(chatInputView);
+                    this.cordova.getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            frameLayout.addView(chatInputView);
+                        }
+                    });
                 }
                 return true;
             case "onSendMessage":
