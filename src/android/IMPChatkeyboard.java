@@ -1,6 +1,8 @@
 package de.impacgroup.cordovakeyboard;
 
+import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -27,8 +29,14 @@ public class IMPChatkeyboard extends CordovaPlugin {
         FrameLayout frameLayout =  (FrameLayout) webView.getView().getParent();
         switch (action) {
             case "showKeyboard":
-                chatInputView = LayoutInflater.from(this.cordova.getActivity()).inflate(R.layout.chat_input_view, null);
-                frameLayout.addView(chatInputView);
+                if (chatInputView == null) {
+                    Application app=cordova.getActivity().getApplication();
+                    String package_name = app.getPackageName();
+                    Resources resources = app.getResources();
+                    int ic = resources.getIdentifier("chat_input_view", "layout", package_name);
+                    chatInputView = LayoutInflater.from(this.cordova.getActivity()).inflate(ic, null);
+                    frameLayout.addView(chatInputView);
+                }
                 return true;
             case "onSendMessage":
                 return true;
@@ -42,6 +50,7 @@ public class IMPChatkeyboard extends CordovaPlugin {
             case "hideKeyboard":
                 if (chatInputView != null) {
                     frameLayout.removeView(chatInputView);
+                    chatInputView = null;
                 }
                 return true;
             default:
