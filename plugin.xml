@@ -39,7 +39,7 @@
         </config-file>
 
         <source-file src="src/android/IMPChatkeyboard.java" target-dir="src/de/impacgroup/cordovakeyboard"/>
-        <source-file src="src/android/chat_input_view.xml" target-dir="src/layout"/>
+        <source-file src="src/android/chat_input_view.xml" target-dir=""res/layout""/>
         <framework src="androidx.constraintlayout:constraintlayout:1.1.3"/>
     </platform>
 
