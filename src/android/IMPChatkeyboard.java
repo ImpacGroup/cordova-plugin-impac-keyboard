@@ -3,9 +3,11 @@ package de.impacgroup.cordovakeyboard;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -35,6 +37,8 @@ public class IMPChatkeyboard extends CordovaPlugin {
                     Resources resources = app.getResources();
                     int ic = resources.getIdentifier("chat_input_view", "layout", package_name);
                     chatInputView = LayoutInflater.from(this.cordova.getActivity()).inflate(ic, null);
+                    FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM);
+                    chatInputView.setLayoutParams(params);
                     this.cordova.getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
