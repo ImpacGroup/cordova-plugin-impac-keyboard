@@ -3,9 +3,11 @@ package de.impacgroup.cordovakeyboard;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -52,8 +54,14 @@ public class IMPChatkeyboard extends CordovaPlugin {
             case "onInputChanged":
                 return true;
             case "setColor":
-                callbackContext.success(1);
-                return true;
+                String colorString = args.getString(0);
+                if (chatInputView != null && colorString != null) {
+                    Button button = chatInputView.findViewById(R.id.sendButton);
+                    button.setBackgroundColor(Color.parseColor(colorString));
+                    return true;
+                } else {
+                    return false;
+                }
             case "setImage":
                 return true;
             case "hideKeyboard":
