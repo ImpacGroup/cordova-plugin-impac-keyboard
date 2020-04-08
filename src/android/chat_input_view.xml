@@ -26,13 +26,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/sendButton"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:elevation="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         android:background="@drawable/circle_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
