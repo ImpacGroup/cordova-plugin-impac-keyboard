@@ -1,13 +1,13 @@
 package de.impacgroup.cordovakeyboard;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.Base64;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -35,7 +34,6 @@ public class IMPChatkeyboard extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Context context = this.cordova.getActivity().getApplicationContext();
     }
 
     @Override
@@ -56,9 +54,9 @@ public class IMPChatkeyboard extends CordovaPlugin {
                         public void run() {
                             frameLayout.addView(chatInputView);
                             callbackContext.success();
+                            updateWebViewSize(true);
                         }
                     });
-
                 }
                 return true;
             case "onSendMessage":{
@@ -119,6 +117,7 @@ public class IMPChatkeyboard extends CordovaPlugin {
                         public void run() {
                             frameLayout.removeView(chatInputView);
                             chatInputView = null;
+                            updateWebViewSize(false);
                         }
                     });
                 }
@@ -128,6 +127,17 @@ public class IMPChatkeyboard extends CordovaPlugin {
                 break;
         }
         return false;
+    }
+
+    private void updateWebViewSize(boolean open) {
+        Resources r = cordova.getActivity().getResources();
+        if (open) {
+            float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 66, r.getDisplayMetrics());
+            int height = webView.getView().getHeight() - (int) px;
+            webView.getView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, height));
+        } else {
+            webView.getView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+        }
     }
 
     private @Nullable ImageButton getSendButton() {
