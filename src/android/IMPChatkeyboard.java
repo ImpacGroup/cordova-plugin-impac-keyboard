@@ -114,8 +114,13 @@ public class IMPChatkeyboard extends CordovaPlugin {
             }
             case "hideKeyboard":
                 if (chatInputView != null) {
-                    frameLayout.removeView(chatInputView);
-                    chatInputView = null;
+                    this.cordova.getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            frameLayout.removeView(chatInputView);
+                            chatInputView = null;
+                        }
+                    });
                 }
                 return true;
             default:
