@@ -11,9 +11,11 @@ import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -21,12 +23,14 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class IMPChatkeyboard extends CordovaPlugin {
 
     private View chatInputView;
+    private CallbackContext sendButtonCallbackContext;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -57,8 +61,24 @@ public class IMPChatkeyboard extends CordovaPlugin {
 
                 }
                 return true;
-            case "onSendMessage":
+            case "onSendMessage":{
+                this.sendButtonCallbackContext = callbackContext;
+                final ImageButton button = getSendButton();
+                final EditText editText = getTextView();
+                if (button != null && editText != null) {
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String text = editText.getText().toString();
+                            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, text);
+                            pluginResult.setKeepCallback(true);
+                            sendButtonCallbackContext.sendPluginResult(pluginResult);
+                            editText.setText("");
+                        }
+                    });
+                }
                 return true;
+            }
             case "onInputChanged":
                 return true;
             case "setColor": {
@@ -106,10 +126,18 @@ public class IMPChatkeyboard extends CordovaPlugin {
     }
 
     private @Nullable ImageButton getSendButton() {
+        return (ImageButton) getViewByName("sendButton");
+    }
+
+    private @Nullable EditText getTextView() {
+        return (EditText) getViewByName("inputEditText");
+    }
+
+    private @Nullable View getViewByName(String name) {
         if (chatInputView != null) {
             Application app = cordova.getActivity().getApplication();
             Resources resources = app.getResources();
-            int ic = resources.getIdentifier("sendButton", "id", app.getPackageName());
+            int ic = resources.getIdentifier(name, "id", app.getPackageName());
             return chatInputView.findViewById(ic);
         }
         return null;

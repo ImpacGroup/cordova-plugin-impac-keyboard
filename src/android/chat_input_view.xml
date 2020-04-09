@@ -9,18 +9,20 @@
     android:layout_alignParentStart="true"
     android:layout_alignParentEnd="true"
     android:layout_gravity="bottom"
-    android:background="@android:color/darker_gray"
+    android:background="#F1F1F1"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
         android:id="@+id/inputEditText"
-        android:background="@android:color/white"
+        android:background="@drawable/edittext_shape"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:padding="4dp"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendButton"
         app:layout_constraintStart_toStartOf="parent"
