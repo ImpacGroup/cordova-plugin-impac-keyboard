@@ -150,7 +150,7 @@ public class IMPChatkeyboard extends CordovaPlugin {
             float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 66, r.getDisplayMetrics());
             int height = defaultHeight - (int) px;
             webView.getView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, height));
-        } else if (keyboardHeight) {
+        } else if (open && keyboardHeight) {
             Window window = cordova.getActivity().getWindow();
             View root = window.getDecorView().findViewById(android.R.id.content);
             int heightDiff = root.getRootView().getHeight() - root.getHeight();
@@ -195,14 +195,14 @@ public class IMPChatkeyboard extends CordovaPlugin {
     void onShowKeyboard() {
         if (!isKeyboardOpen) {
             isKeyboardOpen = true;
-            updateWebViewSize(true, true);
+            updateWebViewSize(chatInputView != null, true);
         }
     }
 
     void onHideKeyboard() {
         if (isKeyboardOpen) {
             isKeyboardOpen = false;
-            updateWebViewSize(true, false);
+            updateWebViewSize(chatInputView != null, false);
         }
     }
 
