@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-impac-keyboard",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An Cordova plugin for iOS and Android that add a native keyboard for chats.",
     "cordova": {
       "id": "cordova-plugin-impac-keyboard",
