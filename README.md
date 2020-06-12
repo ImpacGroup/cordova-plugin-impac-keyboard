@@ -34,3 +34,27 @@ window.plugins.impacKeyboard.hideKeyboard(() => {
   // Keyboard removed
 });
 ```
+
+## Customize layout
+
+To set the color of the right button use *setColor*.
+
+```js
+window.plugins.impacKeyboard.setColor("#f5f5f5");
+```
+
+To set the image of the button use base64 endcoded image file.
+
+```js
+window.plugins.impacKeyboard.setImage("bas64…");
+```
+
+## Events
+
+Make sure to listen *onSendMessage* to know if the user pressed the button.
+
+```js
+window.plugins.impacKeyboard.onSendMessage(() => {
+  
+});
+```
