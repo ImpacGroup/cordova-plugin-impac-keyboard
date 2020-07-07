@@ -58,3 +58,4 @@ window.plugins.impacKeyboard.onSendMessage(() => {
   
 });
 ```
+
